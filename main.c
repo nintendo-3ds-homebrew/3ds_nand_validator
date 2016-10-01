@@ -6,6 +6,7 @@
 #include <sys/stat.h>
 #include <errno.h>
 #include <stdio.h>
+#include <string.h>
 
 #define RED			"\033[031m"
 #define GREEN		"\033[032m"
@@ -39,17 +40,17 @@ unsigned int	get_size_nand(char *nand_filename)
 	unsigned int	size_nand;
 	struct	stat	nand_stat;
 
+
 	if (lstat(nand_filename, &nand_stat) < 0)
 	{
 		if (stat(nand_filename, &nand_stat) < 0)
 		{
-			perror("error in get_size_nand: ");
+			fprintf(stderr, "error stat: %s: %s\n",  strerror(errno), nand_filename);
 			exit(EXIT_FAILURE);
 		}
 	}
 
-	size_nand = nand_stat.st_size;
-	return (size_nand);
+	return(nand_stat.st_size);
 }
 
 int	main(int argc, char **argv)
