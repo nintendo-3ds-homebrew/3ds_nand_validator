@@ -35,3 +35,17 @@ int				check_nand_valid(unsigned int *nand)
 	}
 	return (EXIT_FAILURE);
 }
+
+void	check_size_nand(unsigned int *size_nand1, unsigned int *size_nand2, char **argv)
+{
+	if (check_nand_valid(size_nand1) == EXIT_FAILURE)
+	{
+		printf(RED"Size %s are bad\n"END, argv[1]);
+		exit (EXIT_FAILURE);
+	}
+	if (check_nand_valid(size_nand2) == EXIT_FAILURE)
+	{
+		printf(RED"Size %s are bad\n"END, argv[2]);
+		exit (EXIT_FAILURE);
+	}
+}

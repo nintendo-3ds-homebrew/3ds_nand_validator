@@ -17,10 +17,11 @@
 #define END			"\033[0m"
 #define SIZE_LEN	9
 
-//check_size_nand.c
+//=========================check_size_nand.c===================================
 unsigned int		get_size_nand(char *nand_filename);
 int					check_nand_valid(unsigned int *nand);
-//compare_nand.c
+void				check_size_nand(unsigned int *size_nand1, unsigned int *size_nand2, char **argv);
+//===========================compare_nand.c====================================
 int					compare_nand(unsigned int size_nand);
-
+//=============================================================================
 #endif
