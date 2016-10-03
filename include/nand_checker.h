@@ -26,7 +26,8 @@
 //=========================check_size_nand.c===================================
 unsigned int		get_size_nand(char *nand_filename);
 int					check_nand_valid(unsigned int *nand);
-void				check_size_nand(unsigned int *size_nand1, unsigned int *size_nand2, char **argv);
+//void				check_size_nand(unsigned int *size_nand1, unsigned int *size_nand2, char **argv);
+void	check_size_nand(unsigned int *size_nand1, unsigned int *size_nand2, char *nand1, char *nand2);
 //===========================compare_nand.c====================================
 int					compare_nand(char *nand1, char *nand2);
 //=============================================================================
