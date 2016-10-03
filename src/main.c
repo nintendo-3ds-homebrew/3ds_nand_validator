@@ -4,7 +4,7 @@
 // verfier la taille du fichier √
 // verifier si le fichier a une extension en .bin ou .img √
 // verifier qu'il ny pas plus ou moins de 3 arguments √
-// verfier la presence de NCSD a l'octet 256
+// verfier la presence de NCSD a l'octet 256 √
 
 void	create_folder(void)
 {
@@ -40,6 +40,7 @@ int	main(int argc, char **argv)
 	size_nand1 = get_size_nand(argv[1]);
 	size_nand2 = get_size_nand(argv[2]);
 	check_size_nand(&size_nand1, &size_nand2, argv);
-	compare_nand(size_nand1);
+	compare_nand(argv[1], argv[2]);
+	printf(GREEN"%s and %s [Ok] !\n"END, argv[1], argv[2]);
 	return (EXIT_SUCCESS);
 }

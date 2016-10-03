@@ -27,8 +27,7 @@ int				check_nand_valid(unsigned int *nand)
 	{
 		if (*nand == size[i])
 		{
-			printf(YELLOW"Size_nand1 = %d\n"END, *nand);
-			printf(GREEN"Size nand OK\n"END);
+			printf(YELLOW"Size nand = %d octets\n"END, *nand);
 			return (EXIT_SUCCESS);
 		}
 		++i;
@@ -38,14 +37,32 @@ int				check_nand_valid(unsigned int *nand)
 
 void	check_size_nand(unsigned int *size_nand1, unsigned int *size_nand2, char **argv)
 {
+	printf(WHITE"===================================\n"END);
+	printf(CYAN"Checking size %s ...\n"END, argv[1]);
+	/*check if nand1 and nand2 have same size*/
+	if (*size_nand1 != *size_nand2)
+	{
+		printf(RED"Size %s and %s are not same\n"END, argv[1], argv[2]);
+		exit(EXIT_FAILURE);
+	}
+	/*check if nand1 have a good size*/
 	if (check_nand_valid(size_nand1) == EXIT_FAILURE)
 	{
 		printf(RED"Size %s are bad\n"END, argv[1]);
 		exit (EXIT_FAILURE);
 	}
+	printf(GREEN"Size of %s [Ok]\n"END, argv[1]);
+
+	printf(WHITE"===================================\n"END);
+
+	printf(CYAN"Checking size %s ...\n"END, argv[2]);
+	/*check if nand2 have a good size*/
 	if (check_nand_valid(size_nand2) == EXIT_FAILURE)
 	{
 		printf(RED"Size %s are bad\n"END, argv[2]);
 		exit (EXIT_FAILURE);
 	}
+	printf(GREEN"Size of %s [Ok]\n"END, argv[2]);
+
+	printf(WHITE"===================================\n"END);
 }

@@ -6,7 +6,7 @@ OBJS = ./*.o
 
 INCLUDE = ./include/nand_checker.h
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -O3 -Wall -Wextra -Werror
 
 all:
 	@gcc -c $(FLAGS) $(SRCS)
