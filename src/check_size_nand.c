@@ -42,7 +42,6 @@ void	check_size_nand(FILE **log, unsigned int *size_nand1, unsigned int *size_na
 {
 	write_log_time(log);
 	fprintf(*log, "Checking size %s ...\n", nand1);
-	/*check if nand1 and nand2 have same size*/
 	if (*size_nand1 != *size_nand2)
 	{
 		printf("Size %s and %s are not same\n", nand1, nand2);
@@ -51,12 +50,11 @@ void	check_size_nand(FILE **log, unsigned int *size_nand1, unsigned int *size_na
 		fclose(*log);
 		exit(EXIT_FAILURE);
 	}
-	/*check if nand1 have a good size*/
 	if (check_nand_valid(log, size_nand1) == EXIT_FAILURE)
 	{
-		printf(RED"Size %s is bad\n"END, nand1);
+		printf(RED"Size of %s is bad\n"END, nand1);
 		write_log_time(log);
-		fprintf(*log, "Size %s is bad\n", nand1);
+		fprintf(*log, "Size of %s is bad\n", nand1);
 		fclose(*log);
 		exit (EXIT_FAILURE);
 	}
@@ -68,9 +66,9 @@ void	check_size_nand(FILE **log, unsigned int *size_nand1, unsigned int *size_na
 	/*check if nand2 have a good size*/
 	if (check_nand_valid(log, size_nand2) == EXIT_FAILURE)
 	{
-		printf(RED"Size %s is bad\n"END, nand2);
+		printf(RED"Size of %s is bad\n"END, nand2);
 		write_log_time(log);
-		fprintf(*log, "Size %s is bad\n", nand2);
+		fprintf(*log, "Size of %s is bad\n", nand2);
 		fclose(*log);
 		exit (EXIT_FAILURE);
 	}
