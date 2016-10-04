@@ -8,18 +8,18 @@
 
 void	create_folder(void)
 {
-	/*struct stat	st;*/
-
-	/*if (stat("./nands", &st) == -1)*/
 	if (access("./nands", F_OK) == -1)
 		mkdir("./nands", 0700);
 }
 
-void	check_if_nand_exist()
+void	check_if_nand_exist(FILE **log)
 {
 	if (access("./nands/nand1.bin", F_OK) == -1 || access("./nands/nand2.bin", F_OK) == -1)
 	{
-		printf("Put nand1.bin and nand2.bin in nands folder\n");
+		printf(RED"Put nand1.bin and nand2.bin in nands folder\n"END);
+		write_log_time(log);
+		fprintf(*log, "Put nand1.bin and nand2.bin in nands folder\n");
+		fclose(*log);
 		exit (EXIT_FAILURE);
 	}
 }
@@ -28,18 +28,18 @@ int	main(void)
 {
 	unsigned int	size_nand1;
 	unsigned int	size_nand2;
+	FILE			*log = NULL;
 
 	create_folder();
-	check_if_nand_exist();
-	/*while (check_if_nand_exist() == EXIT_FAILURE)*/
-	/*{*/
-		/*printf("Press enter to check nands\n");*/
-		/*scanf("OK\n");*/
-	/*}*/
-	size_nand1 = get_size_nand("./nands/nand1.bin");
-	size_nand2 = get_size_nand("./nands/nand2.bin");
-	check_size_nand(&size_nand1, &size_nand2, "./nands/nand1.bin", "./nands/nand2.bin");
-	compare_nand("./nands/nand1.bin", "./nands/nand2.bin");
-	printf(GREEN"./nands/nand1.bin and ./nands/nand1.bin [Ok] !\n");
+	create_log_file(&log);
+	check_if_nand_exist(&log);
+	size_nand1 = get_size_nand(&log, "./nands/nand1.bin");
+	size_nand2 = get_size_nand(&log, "./nands/nand2.bin");
+	check_size_nand(&log, &size_nand1, &size_nand2, "./nands/nand1.bin", "./nands/nand2.bin");
+	compare_nand(&log, "./nands/nand1.bin", "./nands/nand2.bin");
+	printf(GREEN"Dumps are good !\n"END);
+	write_log_time(&log);
+	fprintf(log, "Dumps are good !\n");
+	fclose(log);
 	return (EXIT_SUCCESS);
 }
