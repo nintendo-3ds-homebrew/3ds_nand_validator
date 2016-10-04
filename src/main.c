@@ -1,15 +1,11 @@
 #include "../include/nand_checker.h"
 
-// verifier si le fichier existe √
-// verfier la taille du fichier √
-// verifier si le fichier a une extension en .bin ou .img √
-// verifier qu'il ny pas plus ou moins de 3 arguments √
-// verfier la presence de NCSD a l'octet 256 √
-
-void	create_folder(void)
+void	create_folders(void)
 {
 	if (access("./nands", F_OK) == -1)
 		mkdir("./nands", 0700);
+	if (access("./log", F_OK) == -1)
+		mkdir("./log", 0700);
 }
 
 void	check_if_nand_exist(FILE **log)
@@ -24,13 +20,13 @@ void	check_if_nand_exist(FILE **log)
 	}
 }
 
-int	main(void)
+int	main()
 {
 	unsigned int	size_nand1;
 	unsigned int	size_nand2;
 	FILE			*log = NULL;
 
-	create_folder();
+	create_folders();
 	create_log_file(&log);
 	check_if_nand_exist(&log);
 	size_nand1 = get_size_nand(&log, "./nands/nand1.bin");

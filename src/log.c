@@ -2,7 +2,7 @@
 
 void	create_log_file(FILE **log)
 {
-	if ((*log = fopen("./info.log", "w")) == NULL)
+	if ((*log = fopen("./log/info.log", "w")) == NULL)
 	{
 		printf(RED"info.log failure\n"END);
 		exit(EXIT_FAILURE);

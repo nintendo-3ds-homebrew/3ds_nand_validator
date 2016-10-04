@@ -35,6 +35,6 @@ void				create_log_file(FILE **log);
 void				write_log_time(FILE **log);
 //===========================main.c====================================
 void				check_if_nand_exist(FILE **log);
-void				create_folder(void);
+void				create_folders(void);
 //=============================================================================
 #endif
