@@ -23,3 +23,7 @@ cd ~/Desktop/3ds_nand_checker
 ```bash
 ./3ds_nand_checker
 ```
+
+Windows :
+
+Soon ...
