@@ -2,7 +2,7 @@
 
 unsigned int	get_size_nand(FILE **log, char *nand_filename)
 {
-	struct	stat	nand_stat;
+	struct stat	nand_stat;
 
 	if (lstat(nand_filename, &nand_stat) < 0)
 	{
@@ -44,7 +44,7 @@ void	check_size_nand(FILE **log, unsigned int *size_nand1, unsigned int *size_na
 	fprintf(*log, "Checking size %s ...\n", nand1);
 	if (*size_nand1 != *size_nand2)
 	{
-		printf("Size %s and %s are not same\n", nand1, nand2);
+		printf(RED"Size %s and %s are not same\n"END, nand1, nand2);
 		write_log_time(log);
 		fprintf(*log, "Size %s and %s are not same\n", nand1, nand2);
 		fclose(*log);
@@ -54,19 +54,22 @@ void	check_size_nand(FILE **log, unsigned int *size_nand1, unsigned int *size_na
 	{
 		printf(RED"Size of %s is bad\n"END, nand1);
 		write_log_time(log);
+		fprintf(*log, "Size nand = %d octets\n", *size_nand1);
+		write_log_time(log);
 		fprintf(*log, "Size of %s is bad\n", nand1);
 		fclose(*log);
 		exit (EXIT_FAILURE);
 	}
 	write_log_time(log);
 	fprintf(*log, "Size of %s [Ok]\n", nand1);
-
 	write_log_time(log);
 	fprintf(*log, "Checking size %s ...\n", nand2);
 	/*check if nand2 have a good size*/
 	if (check_nand_valid(log, size_nand2) == EXIT_FAILURE)
 	{
 		printf(RED"Size of %s is bad\n"END, nand2);
+		write_log_time(log);
+		fprintf(*log, "Size nand = %d octets\n", *size_nand2);
 		write_log_time(log);
 		fprintf(*log, "Size of %s is bad\n", nand2);
 		fclose(*log);

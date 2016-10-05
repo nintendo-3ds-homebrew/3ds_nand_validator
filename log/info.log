@@ -1,0 +1,17 @@
+############### 3DS_nand_checker ##############
+#                                             #
+#          Developped by SegFault42           #
+#       https://github.com/SegFault42/        #
+#                                             #
+###############################################
+
+<Wed Oct  5 03:31:43 2016> : Checking size ./nands/nand1.bin ...
+<Wed Oct  5 03:31:43 2016> : Size nand = 1300234240 octets
+<Wed Oct  5 03:31:43 2016> : Size of ./nands/nand1.bin [Ok]
+<Wed Oct  5 03:31:43 2016> : Checking size ./nands/nand2.bin ...
+<Wed Oct  5 03:31:43 2016> : Size nand = 1300234240 octets
+<Wed Oct  5 03:31:43 2016> : Size of ./nands/nand2.bin [Ok]
+<Wed Oct  5 03:31:43 2016> : Reading nand ...
+<Wed Oct  5 03:31:43 2016> : NCSD found !
+<Wed Oct  5 03:32:26 2016> : Nand are the same
+<Wed Oct  5 03:32:26 2016> : Dumps are good !
