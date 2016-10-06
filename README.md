@@ -1,4 +1,4 @@
-# 3ds_nand_validator v0.2
+# 3ds_nand_validator v0.3
 
 Tool for checking 3DS dump.
 
