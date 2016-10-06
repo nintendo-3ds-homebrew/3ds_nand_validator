@@ -1,5 +1,37 @@
 #include "../include/nand_checker.h"
 
+static void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+static void	putstr(char const *s)
+{
+	int i = 0;
+
+	while (s[i] != '\0')
+	{
+		ft_putchar(s[i]);
+		++i;
+	}
+}
+
+static void	putnbr(int nb)
+{
+	if (nb < 0)
+	{
+		ft_putchar('-');
+		nb = -nb;
+	}
+	if (nb > 9)
+	{
+		putnbr(nb / 10);
+		putnbr(nb % 10);
+	}
+	else
+		ft_putchar('0' + nb);
+}
+
 static int	check_NCSD(FILE **log, char *buff1)
 {
 	if (buff1[256] == 'N' && buff1[257] == 'C' && buff1[258] == 'S' && buff1[259] == 'D')
@@ -20,7 +52,7 @@ static int	check_NCSD(FILE **log, char *buff1)
 	return (EXIT_SUCCESS);
 }
 
-int	compare_nand(FILE **log, char *nand1, char *nand2)
+int	compare_nand(FILE **log, char *nand1, char *nand2, unsigned int *size_nand)
 {
 	int				fd1;
 	int				fd2;
@@ -29,6 +61,9 @@ int	compare_nand(FILE **log, char *nand1, char *nand2)
 	char			*buff1 = (char *)malloc(sizeof(char) * BUFF_SIZE);
 	char			*buff2 = (char *)malloc(sizeof(char) * BUFF_SIZE);
 	int				i = 0;
+	int				nb_percent = 11;
+	int				percent = 1;
+	int				progress = *size_nand / BUFF_SIZE;
 
 	if ((fd1 = open(nand1, O_RDONLY)) == -1)
 	{
@@ -51,8 +86,16 @@ int	compare_nand(FILE **log, char *nand1, char *nand2)
 	fprintf(*log, "Reading nand ...\n");
 	while ((ret1 = read(fd1, buff1, BUFF_SIZE)) > 0 && (ret2 = read(fd2, buff2, BUFF_SIZE)) > 0)
 	{
+		if (i == progress / nb_percent)
+		{
+			putnbr((percent - 1) * 10);
+			putstr("% ");
+			nb_percent--;
+			percent++;
+		}
 		if (memcmp(buff1, buff2, BUFF_SIZE) != 0)
 		{
+			printf("\n");
 			printf(RED"Nands are not same\n"END);
 			write_log_time(log);
 			fprintf(*log, "Nands are not same\n");
@@ -67,6 +110,8 @@ int	compare_nand(FILE **log, char *nand1, char *nand2)
 			check_NCSD(log, buff1);
 		i++;
 	}
+	putnbr(100);
+	putstr("%\n");
 	write_log_time(log);
 	fprintf(*log, "Nand are the same\n");
 	close(ret1);

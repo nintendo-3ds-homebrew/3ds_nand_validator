@@ -29,7 +29,7 @@ unsigned int		get_size_nand(FILE **log, char *nand_filename);
 int					check_nand_valid(FILE **log, unsigned int *nand);
 void				check_size_nand(FILE **log, unsigned int *size_nand1, unsigned int *size_nand2, char *nand1, char *nand2);
 //===========================compare_nand.c====================================
-int					compare_nand(FILE **log, char *nand1, char *nand2);
+int					compare_nand(FILE **log, char *nand1, char *nand2, unsigned int *size_nand);
 //===========================log.c====================================
 void				create_log_file(FILE **log);
 void				write_log_time(FILE **log);

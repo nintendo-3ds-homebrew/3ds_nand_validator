@@ -32,7 +32,7 @@ int	main()
 	size_nand1 = get_size_nand(&log, "./nands/nand1.bin");
 	size_nand2 = get_size_nand(&log, "./nands/nand2.bin");
 	check_size_nand(&log, &size_nand1, &size_nand2, "./nands/nand1.bin", "./nands/nand2.bin");
-	compare_nand(&log, "./nands/nand1.bin", "./nands/nand2.bin");
+	compare_nand(&log, "./nands/nand1.bin", "./nands/nand2.bin", &size_nand1);
 	printf(GREEN"Dumps are good !\n"END);
 	write_log_time(&log);
 	fprintf(log, "Dumps are good !\n");
