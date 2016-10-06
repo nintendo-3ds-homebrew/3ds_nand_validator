@@ -1,12 +1,12 @@
-NAME = 3ds_nand_checker
+NAME = 3ds_nand_validator
 
 SRCS = src/*.c
 
 OBJS = ./*.o
 
-INCLUDE = ./include/nand_checker.h
+INCLUDE = ./include/nand_validator.h
 
-FLAGS = -O3 -Wall -Wextra -Werror
+FLAGS = -O3 #-Wall -Wextra -Werror
 
 all:
 	@gcc -c $(FLAGS) $(SRCS)

@@ -1,4 +1,4 @@
-#include "../include/nand_checker.h"
+#include "../include/nand_validator.h"
 
 void	create_log_file(FILE **log)
 {
@@ -7,7 +7,7 @@ void	create_log_file(FILE **log)
 		printf(RED"info.log failure\n"END);
 		exit(EXIT_FAILURE);
 	}
-	fprintf(*log, "############### 3DS_nand_checker ##############\n");
+	fprintf(*log, "############### 3DS_nand_validator ############\n");
 	fprintf(*log, "#                                             #\n");
 	fprintf(*log, "#          Developped by SegFault42           #\n");
 	fprintf(*log, "#       https://github.com/SegFault42/        #\n");

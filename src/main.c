@@ -1,4 +1,4 @@
-#include "../include/nand_checker.h"
+#include "../include/nand_validator.h"
 
 void	create_folders(void)
 {

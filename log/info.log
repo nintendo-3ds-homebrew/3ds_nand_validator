@@ -1,17 +1,16 @@
-############### 3DS_nand_checker ##############
+############### 3DS_nand_validator ############
 #                                             #
 #          Developped by SegFault42           #
 #       https://github.com/SegFault42/        #
 #                                             #
 ###############################################
 
-<Thu Oct  6 04:43:38 2016> : Checking size ./nands/nand1.bin ...
-<Thu Oct  6 04:43:38 2016> : Size nand = 1300234240 octets
-<Thu Oct  6 04:43:38 2016> : Size of ./nands/nand1.bin [Ok]
-<Thu Oct  6 04:43:38 2016> : Checking size ./nands/nand2.bin ...
-<Thu Oct  6 04:43:38 2016> : Size nand = 1300234240 octets
-<Thu Oct  6 04:43:38 2016> : Size of ./nands/nand2.bin [Ok]
-<Thu Oct  6 04:43:38 2016> : Reading nand ...
-<Thu Oct  6 04:43:38 2016> : NCSD found !
-<Thu Oct  6 04:44:21 2016> : Nand are the same
-<Thu Oct  6 04:44:21 2016> : Dumps are good !
+<Thu Oct  6 22:45:25 2016> : Checking size ./nands/nand1.bin ...
+<Thu Oct  6 22:45:25 2016> : Size nand = 1979711488 octets
+<Thu Oct  6 22:45:25 2016> : Size of ./nands/nand1.bin [Ok]
+<Thu Oct  6 22:45:25 2016> : Checking size ./nands/nand2.bin ...
+<Thu Oct  6 22:45:25 2016> : Size nand = 1979711488 octets
+<Thu Oct  6 22:45:25 2016> : Size of ./nands/nand2.bin [Ok]
+<Thu Oct  6 22:45:25 2016> : Reading nand ...
+<Thu Oct  6 22:45:25 2016> : NCSD found !
+<Thu Oct  6 22:46:35 2016> : Nands are not same
