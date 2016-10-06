@@ -1,5 +1,5 @@
-#ifndef NAND_CHECKER_H
-#define NAND_CHECKER_H
+#ifndef nand_validator_H
+#define nand_validator_H
 
 #include <stdlib.h>
 #include <fcntl.h>

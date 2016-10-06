@@ -1,4 +1,4 @@
-#include "../include/nand_checker.h"
+#include "../include/nand_validator.h"
 
 static int	check_NCSD(FILE **log, char *buff1)
 {

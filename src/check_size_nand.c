@@ -1,4 +1,4 @@
-#include "../include/nand_checker.h"
+#include "../include/nand_validator.h"
 
 unsigned int	get_size_nand(FILE **log, char *nand_filename)
 {
