@@ -59,7 +59,7 @@ int	compare_nand(FILE **log, char *nand1, char *nand2, unsigned int *size_nand)
 	{
         if (i == progress / nb_percent)
         {
-            printf("%d%% ", percent * 10);
+            printf("%d%% ", (percent - 1) * 10);
             nb_percent--;
             percent++;
         }
@@ -83,7 +83,7 @@ int	compare_nand(FILE **log, char *nand1, char *nand2, unsigned int *size_nand)
 			check_NCSD(log, buff1);
 		i++;
 	}
-	printf("\n");
+	printf("100 %\n");
 	write_log_time(log);
 	fprintf(*log, "Nand are the same\n");
 	//close(ret1);
