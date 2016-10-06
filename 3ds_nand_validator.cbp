@@ -31,7 +31,20 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="main.c">
+		<Unit filename="include/nand_validator.h" />
+		<Unit filename="ressources.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
+		<Unit filename="src/check_size_nand.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/compare_nand.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/log.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/main.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>

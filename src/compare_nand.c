@@ -50,7 +50,7 @@ int	compare_nand(FILE **log, char *nand1, char *nand2, unsigned int *size_nand)
 	char			*buff1 = (char *)malloc(sizeof(char) * BUFF_SIZE);
 	char			*buff2 = (char *)malloc(sizeof(char) * BUFF_SIZE);
 	int				i = 0;
-	int				progress = (*size_nand / BUFF_SIZE) / 10;
+	int				progress = (*size_nand / BUFF_SIZE) / 100;
 	int				ret_cmp = 0;
 	int				iter = 0;
 
@@ -75,9 +75,10 @@ int	compare_nand(FILE **log, char *nand1, char *nand2, unsigned int *size_nand)
 	fprintf(*log, "Reading nand ...\n");
 	while ((ret1 = read(fd1, buff1, BUFF_SIZE)) > 0 && (ret2 = read(fd2, buff2, BUFF_SIZE)) > 0)
 	{
-        if (i == progress * iter)
+        if (i == progress * iter && iter <= 100)
 		{
-		    printf("%d%% ", iter * 10);
+		    printf("\r");
+		    printf("%d%% ", iter);
 			++iter;
 		}
 		if ((ret_cmp = ft_memcmp(buff1, buff2, BUFF_SIZE)) != -1)
