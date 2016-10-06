@@ -1,10 +1,10 @@
 # depslib dependency file v1.0
 1475699986 source:c:\users\rabougue\documents\github\3ds_nand_validator\ressources.rc
 
-1475782312 source:c:\users\rabougue\documents\github\3ds_nand_validator\src\check_size_nand.c
+1475783052 source:c:\users\rabougue\documents\github\3ds_nand_validator\src\check_size_nand.c
 	"../include/nand_validator.h"
 
-1475782322 c:\users\rabougue\documents\github\3ds_nand_validator\include\nand_validator.h
+1475783052 c:\users\rabougue\documents\github\3ds_nand_validator\include\nand_validator.h
 	<stdlib.h>
 	<fcntl.h>
 	<stdio.h>
@@ -18,9 +18,12 @@
 	<time.h>
 	<windows.h>
 
-1475782304 source:c:\users\rabougue\documents\github\3ds_nand_validator\src\compare_nand.c
+1475788051 source:c:\users\rabougue\documents\github\3ds_nand_validator\src\compare_nand.c
 	"../include/nand_validator.h"
 
-1475782295 source:c:\users\rabougue\documents\github\3ds_nand_validator\src\main.c
+1475783052 source:c:\users\rabougue\documents\github\3ds_nand_validator\src\main.c
+	"../include/nand_validator.h"
+
+1475783052 source:c:\users\rabougue\documents\github\3ds_nand_validator\src\log.c
 	"../include/nand_validator.h"
 

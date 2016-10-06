@@ -1,5 +1,23 @@
 #include "../include/nand_validator.h"
 
+static int	ft_memcmp(const void *s1, const void *s2, size_t n)
+{
+	unsigned char		*ss1;
+	unsigned char		*ss2;
+	size_t				i;
+
+	ss1 = (unsigned char *)s1;
+	ss2 = (unsigned char *)s2;
+	i = 0;
+	while (i < n)
+	{
+		if (ss1[i] != ss2[i])
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
 static int	check_NCSD(FILE **log, char *buff1)
 {
 	if (buff1[256] == 'N' && buff1[257] == 'C' && buff1[258] == 'S' && buff1[259] == 'D')
@@ -32,9 +50,9 @@ int	compare_nand(FILE **log, char *nand1, char *nand2, unsigned int *size_nand)
 	char			*buff1 = (char *)malloc(sizeof(char) * BUFF_SIZE);
 	char			*buff2 = (char *)malloc(sizeof(char) * BUFF_SIZE);
 	int				i = 0;
-	int             nb_percent = 11;
-	int             percent = 1;
-	int             progress = *size_nand / BUFF_SIZE;
+	int				progress = (*size_nand / BUFF_SIZE) / 10;
+	int				ret_cmp = 0;
+	int				iter = 0;
 
 	if ((fd1 = open(nand1, O_RDONLY | O_BINARY)) == -1)
 	{
@@ -57,16 +75,18 @@ int	compare_nand(FILE **log, char *nand1, char *nand2, unsigned int *size_nand)
 	fprintf(*log, "Reading nand ...\n");
 	while ((ret1 = read(fd1, buff1, BUFF_SIZE)) > 0 && (ret2 = read(fd2, buff2, BUFF_SIZE)) > 0)
 	{
-        if (i == progress / nb_percent)
-        {
-            printf("%d%% ", (percent - 1) * 10);
-            nb_percent--;
-            percent++;
-        }
-		if (memcmp(buff1, buff2, BUFF_SIZE) != 0)
+        if (i == progress * iter)
+		{
+		    printf("%d%% ", iter * 10);
+			++iter;
+		}
+		if ((ret_cmp = ft_memcmp(buff1, buff2, BUFF_SIZE)) != -1)
 		{
 		    printf("\n");
 		    color(RED, BLACK);
+		    printf("Difference at byte %d\n", (i * BUFF_SIZE) + ret_cmp);
+		    write_log_time(log);
+		    fprintf(*log, "Difference at byte %d\n", (i * BUFF_SIZE) + ret_cmp);
 			printf("Nands are not same\n");
 			color(WHITE, BLACK);
 			write_log_time(log);
@@ -83,7 +103,7 @@ int	compare_nand(FILE **log, char *nand1, char *nand2, unsigned int *size_nand)
 			check_NCSD(log, buff1);
 		i++;
 	}
-	printf("100 %\n");
+	printf("\n");
 	write_log_time(log);
 	fprintf(*log, "Nand are the same\n");
 	//close(ret1);
