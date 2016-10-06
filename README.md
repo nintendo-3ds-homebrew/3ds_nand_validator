@@ -1,4 +1,4 @@
-# 3ds_nand_checker v0.1
+# 3ds_nand_checker v0.2
 
 Tool for checking 3DS dump.
 
@@ -6,7 +6,7 @@ Tool for checking 3DS dump.
 
 Linux and Mac :
 
-1) Dowload the tool here : https://github.com/SegFault42/3ds_nand_checker/releases/tag/v0.1
+1) Dowload the tool here : https://github.com/SegFault42/3ds_nand_checker/releases/tag/v0.2
 
 2) Extract 3DS_nand_checker from .zip in Desktop
 
@@ -26,4 +26,10 @@ cd ~/Desktop/3ds_nand_checker
 
 Windows :
 
-Soon ...
+1) Dowload the tool here : https://github.com/SegFault42/3ds_nand_checker/releases/tag/v0.2
+
+2) Extract 3DS_nand_checker from .zip in Desktop
+
+3) Put your dumps in nands folder. (Dumps must be named "nand1.bin" and "nand2.bin")
+
+4) Launch 3ds_nand_checker.exe
