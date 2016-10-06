@@ -6,7 +6,7 @@ Tool for checking 3DS dump.
 
 Linux and Mac :
 
-1) Dowload the tool here : https://github.com/SegFault42/3ds_nand_checker/releases/tag/v0.2
+1) Dowload the tool here : https://github.com/SegFault42/3ds_nand_validator/releases/tag/v0.2
 
 2) Extract 3DS_nand_validator from .zip in Desktop
 
@@ -26,7 +26,7 @@ cd ~/Desktop/3ds_nand_validator
 
 Windows :
 
-1) Dowload the tool here : https://github.com/SegFault42/3ds_nand_checker/releases/tag/v0.2
+1) Dowload the tool here : https://github.com/SegFault42/3ds_nand_validator/releases/tag/v0.2
 
 2) Extract 3DS_nand_validator from .zip in Desktop
 
