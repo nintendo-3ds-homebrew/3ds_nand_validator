@@ -4,16 +4,14 @@ unsigned int	get_size_nand(FILE **log, char *nand_filename)
 {
 	struct stat	nand_stat;
 
-	if (lstat(nand_filename, &nand_stat) < 0)
-	{
-		if (stat(nand_filename, &nand_stat) < 0)
-		{
-			fprintf(stderr, "error stat: %s: %s\n",  strerror(errno), nand_filename);
-			write_log_time(log);
-			fprintf(*log, "error stat: %s: %s\n",  strerror(errno), nand_filename);
-			exit(EXIT_FAILURE);
-		}
-	}
+    if (stat(nand_filename, &nand_stat) < 0)
+    {
+        fprintf(stderr, "error stat: %s: %s\n",  strerror(errno), nand_filename);
+        write_log_time(log);
+        fprintf(*log, "error stat: %s: %s\n",  strerror(errno), nand_filename);
+        press_enter();
+        exit(EXIT_FAILURE);
+    }
 	return(nand_stat.st_size);
 }
 
@@ -44,20 +42,26 @@ void	check_size_nand(FILE **log, unsigned int *size_nand1, unsigned int *size_na
 	fprintf(*log, "Checking size %s ...\n", nand1);
 	if (*size_nand1 != *size_nand2)
 	{
-		printf(RED"Size %s and %s are not same\n"END, nand1, nand2);
+	    color(RED, BLACK);
+		printf("Size %s and %s are not same\n", nand1, nand2);
+		color(WHITE, BLACK);
 		write_log_time(log);
 		fprintf(*log, "Size %s and %s are not same\n", nand1, nand2);
 		fclose(*log);
+		press_enter();
 		exit(EXIT_FAILURE);
 	}
 	if (check_nand_valid(log, size_nand1) == EXIT_FAILURE)
 	{
-		printf(RED"Size of %s is bad\n"END, nand1);
+	    color(RED, BLACK);
+		printf("Size of %s is bad\n", nand1);
+		color(WHITE, BLACK);
 		write_log_time(log);
 		fprintf(*log, "Size nand = %d octets\n", *size_nand1);
 		write_log_time(log);
 		fprintf(*log, "Size of %s is bad\n", nand1);
 		fclose(*log);
+		press_enter();
 		exit (EXIT_FAILURE);
 	}
 	write_log_time(log);
@@ -67,12 +71,15 @@ void	check_size_nand(FILE **log, unsigned int *size_nand1, unsigned int *size_na
 	/*check if nand2 have a good size*/
 	if (check_nand_valid(log, size_nand2) == EXIT_FAILURE)
 	{
-		printf(RED"Size of %s is bad\n"END, nand2);
+	    color(RED, BLACK);
+		printf("Size of %s is bad\n", nand2);
+		color(WHITE, BLACK);
 		write_log_time(log);
 		fprintf(*log, "Size nand = %d octets\n", *size_nand2);
 		write_log_time(log);
 		fprintf(*log, "Size of %s is bad\n", nand2);
 		fclose(*log);
+		press_enter();
 		exit (EXIT_FAILURE);
 	}
 	write_log_time(log);

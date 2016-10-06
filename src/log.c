@@ -4,7 +4,10 @@ void	create_log_file(FILE **log)
 {
 	if ((*log = fopen("./log/info.log", "w")) == NULL)
 	{
-		printf(RED"info.log failure\n"END);
+	    color(RED, BLACK);
+		printf("info.log creation failure\n");
+		color(WHITE, BLACK);
+		press_enter();
 		exit(EXIT_FAILURE);
 	}
 	fprintf(*log, "############### 3DS_nand_checker ##############\n");
@@ -22,4 +25,3 @@ void	write_log_time(FILE **log)
 	ltime = time(NULL); /* get current cal time */
 	fprintf(*log, "<%.24s> : ",asctime(localtime(&ltime)));
 }
-
