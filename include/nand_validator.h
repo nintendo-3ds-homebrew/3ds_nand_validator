@@ -26,7 +26,7 @@
 
 //=========================check_size_nand.c===================================
 unsigned int		get_size_nand(FILE **log, char *nand_filename);
-int					check_nand_valid(FILE **log, unsigned int *nand);
+int					check_nand_valid(FILE **log, unsigned int *nand, int *nand_type);
 void				check_size_nand(FILE **log, unsigned int *size_nand1, unsigned int *size_nand2, char *nand1, char *nand2);
 //===========================compare_nand.c====================================
 int					compare_nand(FILE **log, char *nand1, char *nand2, unsigned int *size_nand);
