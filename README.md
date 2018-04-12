@@ -1,5 +1,7 @@
 # 3ds_nand_validator v0.3
 
+[![HitCount](http://hits.dwyl.io/SegFault42/https://github.com/SegFault42/3ds_nand_validator.svg)](http://hits.dwyl.io/SegFault42/https://github.com/SegFault42/3ds_nand_validator)
+
 Tool for checking 3DS dump.
 
 ##Usage :
